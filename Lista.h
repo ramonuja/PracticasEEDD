@@ -164,7 +164,7 @@ public:
 		while(it.haySiguiente()){
 			ss << it.dato();
 		}
-		return ss.str();
+		return "cadena de prueba";
 	}
 private:
 	Nodo<T> *cabecera, *cola;

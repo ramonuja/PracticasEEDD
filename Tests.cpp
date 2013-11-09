@@ -18,12 +18,12 @@ Tests::~Tests() {
 	// TODO Auto-generated destructor stub
 }
 
-void Tests::testLista() {
+void Tests::testLista() {/*
 	Lista<int> lista;
 	lista.insertarFin(1);
 	lista.insertarFin(2);
 	lista.insertarFin(3);
-	cout << lista.toString() << endl;
+	cout << lista.toString() << endl;*/
 }
 
 } /* namespace EEDD */

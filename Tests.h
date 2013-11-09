@@ -11,7 +11,7 @@
 namespace EEDD {
 #include <string>
 #include <iostream>
-#include <iostream>
+#include "Lista.h"
 using namespace std;
 class Tests {
 public:

@@ -20,7 +20,9 @@ Aplicacion4::~Aplicacion4() {
 
 int Aplicacion4::ejecutar(int argc, char** argv) {
 	cout << "Ejecutando la aplicación 4." << endl;
-
+	cout << "Testeando la lista..." << endl;
+	//Tests t;
+	//t.testLista();
 	return 0;
 }
 

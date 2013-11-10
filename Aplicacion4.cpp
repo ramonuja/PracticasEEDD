@@ -6,7 +6,10 @@
  */
 
 #include "Aplicacion4.h"
-
+#include "Lista.h"
+#include <iostream>
+#include <string>
+using namespace std;
 namespace EEDD {
 
 Aplicacion4::Aplicacion4() {
@@ -21,8 +24,20 @@ Aplicacion4::~Aplicacion4() {
 int Aplicacion4::ejecutar(int argc, char** argv) {
 	cout << "Ejecutando la aplicación 4." << endl;
 	cout << "Testeando la lista..." << endl;
-	//Tests t;
-	//t.testLista();
+	Lista<int> l;
+	cout << "Tamaño inicial de la lista: " << l.tam() << endl;
+	int x = 1;
+	l.insertarFin(x);
+	x = 2;
+	l.insertarFin(x);
+	x = 3;
+	l.insertarFin(x);
+	Iterador<int> *it = l.iteradorIni();
+	do{
+		cout << it->dato() << endl;
+		it->siguiente();
+	}while(it->haySiguiente());
+	delete it;
 	return 0;
 }
 

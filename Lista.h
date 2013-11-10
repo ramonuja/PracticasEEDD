@@ -10,21 +10,21 @@
 
 namespace EEDD {
 #include <string>
-#include <sstream>
+
 using namespace std;
 template <class T>
 	class Nodo {
 	public:
+	Nodo(T &aDato, Nodo<T> *aAnt, Nodo<T> *aSig):	dato(aDato), ant(aAnt), sig(aSig) {}
 	T dato;
 	Nodo<T> *ant, *sig;
-	Nodo(T &aDato, Nodo *aAnt, Nodo *aSig):	dato(aDato), ant(aAnt), sig(aSig) {}
 };
 
 template <class T>
 class Iterador {
 	Nodo<T> *nodo;
 	public:
-	Iterador(Nodo *aNodo) : nodo(aNodo) {}
+	Iterador(Nodo<T> *aNodo) : nodo(aNodo) {}
 	bool hayAnterior() { return nodo != 0; }
 	bool haySiguiente() { return nodo != 0; }
 	void anterior() { nodo = nodo->ant; }
@@ -61,8 +61,8 @@ public:
 
 		return cont;
 	}
-	inline Iterador<T>& iteradorIni(){return new Iterador<T>(cabecera);}
-	inline Iterador<T>& iteradorFin(){return new Iterador<T>(cola);}
+	inline Iterador<T>* iteradorIni(){return new Iterador<T>(cabecera);}
+	inline Iterador<T>* iteradorFin(){return new Iterador<T>(cola);}
 
 	inline void insertar(Iterador<T> &it, const T &dato){
 		//TODO Todavía por implementar
@@ -132,9 +132,8 @@ public:
 		}//end while
 	}
 
-	inline void insertarFin(const T &dato){
-		Nodo<T> *nuevo;
-		nuevo = new Nodo<T>(dato, cola, 0);
+	inline void insertarFin(T &dato){
+		Nodo<T> *nuevo = new Nodo<T>(dato, cola, 0);
 		//caso especial: si la lista estaba vacía,
 		//poner la cola apuntando al nodo
 		if (cabecera == 0)
@@ -156,7 +155,7 @@ public:
 			cola = 0;
 			cabecera = 0;
 		}
-	}
+	}/*
 	inline string toString(){
 		if(tam()==0) return "";
 		Iterador<T> it = iteradorIni();
@@ -165,7 +164,7 @@ public:
 			ss << it.dato();
 		}
 		return "cadena de prueba";
-	}
+	}*/
 private:
 	Nodo<T> *cabecera, *cola;
 };

@@ -9,10 +9,16 @@
 #define APLICACION4_H_
 #include <iostream>
 #include <string>
+#include "Ciudad.h"
+#include "Avl.h"
+#include "Lista.h"
 using namespace std;
 namespace EEDD {
 
 class Aplicacion4 {
+private:
+	void cargarArbol(Avl<Ciudad> *avl);
+	void mostrarDetallesCiudad(Avl<Ciudad> *avl,string nombreCiudad);
 public:
 	Aplicacion4();
 	virtual ~Aplicacion4();

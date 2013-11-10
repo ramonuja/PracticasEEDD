@@ -14,13 +14,6 @@ Ciudad::Ciudad() {
 
 }
 
-Lista<DetalleLinea>& Ciudad::getListadoCodigos() {
-	return listadoCodigos;
-}
-
-void Ciudad::setListadoCodigos(Lista<DetalleLinea>& listadoCodigos) {
-	this->listadoCodigos = listadoCodigos;
-}
 
 const string& Ciudad::getNombreCiudad() const {
 	return nombreCiudad;
@@ -36,6 +29,14 @@ Ciudad::~Ciudad() {
 
 bool Ciudad::operator <(Ciudad& ci) {
 	return nombreCiudad < ci.getNombreCiudad();
+}
+
+ Lista<DetalleLinea*>& Ciudad::getListadoCodigos()  {
+	return listadoCodigos;
+}
+
+void Ciudad::setListadoCodigos( Lista<DetalleLinea*>& listadoCodigos) {
+	this->listadoCodigos = listadoCodigos;
 }
 
 bool Ciudad::operator >(Ciudad& ci) {

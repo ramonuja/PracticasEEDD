@@ -16,16 +16,17 @@ namespace EEDD {
 class Ciudad {
 private:
 	string nombreCiudad;
-	Lista<DetalleLinea> listadoCodigos;
+	Lista<DetalleLinea*> listadoCodigos;
 public:
 	Ciudad();
 	virtual ~Ciudad();
-	Lista<DetalleLinea>& getListadoCodigos() ;
-	void setListadoCodigos( Lista<DetalleLinea>& listadoCodigos);
+
 	const string& getNombreCiudad() const;
 	void setNombreCiudad(const string& nombreCiudad);
 	bool operator < (Ciudad &ci);
 	bool operator > (Ciudad &ci);
+	 Lista<DetalleLinea*>& getListadoCodigos() ;
+	void setListadoCodigos( Lista<DetalleLinea*>& listadoCodigos);
 };
 
 } /* namespace EEDD */

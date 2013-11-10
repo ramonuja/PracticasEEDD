@@ -6,7 +6,7 @@
  */
 
 #include "CargadorDatos.h"
-
+#include <algorithm>
 namespace EEDD {
 
 CargadorDatos::CargadorDatos() {
@@ -37,12 +37,17 @@ int* CargadorDatos::fromString(string s) {
 	return lista;
 
 }
-
+string& quitarComillas(string &s){
+	s.erase(remove( s.begin(), s.end(), '\"' ),s.end()
+	    );
+	return s;
+}
 DetalleLinea* CargadorDatos::siguienteDetalle() {
 	if (fichero->is_open())
 	{
 		string line;
 		if(!getline(*fichero,line)) return 0;
+		quitarComillas(line);
 		DetalleLinea* dl = new DetalleLinea();
 		int inicio,fin;
 		inicio = 0;

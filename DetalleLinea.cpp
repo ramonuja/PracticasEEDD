@@ -25,27 +25,27 @@ void DetalleLinea::setCity(const string& city) {
 	this->city = city;
 }
 
-bool DetalleLinea::isDecommisioned() const {
+const string& DetalleLinea::getDecommisioned() const {
 	return decommisioned;
 }
 
-void DetalleLinea::setDecommisioned(bool decommisioned) {
+void DetalleLinea::setDecommisioned(const string& decommisioned) {
 	this->decommisioned = decommisioned;
 }
 
-int DetalleLinea::getEstimatedPopulation() const {
+const string& DetalleLinea::getEstimatedPopulation() const {
 	return estimatedPopulation;
 }
 
-void DetalleLinea::setEstimatedPopulation(int estimatedPopulation) {
+void DetalleLinea::setEstimatedPopulation(const string& estimatedPopulation) {
 	this->estimatedPopulation = estimatedPopulation;
 }
 
-double DetalleLinea::getLat() const {
+const string& DetalleLinea::getLat() const {
 	return lat;
 }
 
-void DetalleLinea::setLat(double lat) {
+void DetalleLinea::setLat(const string& lat) {
 	this->lat = lat;
 }
 
@@ -65,11 +65,11 @@ void DetalleLinea::setLocationType(const string& locationType) {
 	this->locationType = locationType;
 }
 
-double DetalleLinea::getLon() const {
+const string& DetalleLinea::getLon() const {
 	return lon;
 }
 
-void DetalleLinea::setLon(double lon) {
+void DetalleLinea::setLon(const string& lon) {
 	this->lon = lon;
 }
 
@@ -81,27 +81,27 @@ void DetalleLinea::setState(const string& state) {
 	this->state = state;
 }
 
-int DetalleLinea::getTaxReturnsFiled() const {
+const string& DetalleLinea::getTaxReturnsFiled() const {
 	return taxReturnsFiled;
 }
 
-void DetalleLinea::setTaxReturnsFiled(int taxReturnsFiled) {
+void DetalleLinea::setTaxReturnsFiled(const string& taxReturnsFiled) {
 	this->taxReturnsFiled = taxReturnsFiled;
 }
 
-int DetalleLinea::getTotalWages() const {
+const string& DetalleLinea::getTotalWages() const {
 	return totalWages;
 }
 
-void DetalleLinea::setTotalWages(int totalWages) {
+void DetalleLinea::setTotalWages(const string& totalWages) {
 	this->totalWages = totalWages;
 }
 
-int DetalleLinea::getZipCode() const {
+const string& DetalleLinea::getZipCode() const {
 	return zipCode;
 }
 
-void DetalleLinea::setZipCode(int zipCode) {
+void DetalleLinea::setZipCode(const string& zipCode) {
 	this->zipCode = zipCode;
 }
 

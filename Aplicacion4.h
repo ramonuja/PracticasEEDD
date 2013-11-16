@@ -19,6 +19,8 @@ class Aplicacion4 {
 private:
 	void cargarArbol(Avl<Ciudad> *avl);
 	void mostrarDetallesCiudad(Avl<Ciudad> *avl,string nombreCiudad);
+	Lista<Ciudad*> ciudades;
+	Lista<DetalleLinea*> lineas;
 public:
 	Aplicacion4();
 	virtual ~Aplicacion4();

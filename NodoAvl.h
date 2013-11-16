@@ -16,8 +16,9 @@ public:
 	NodoAvl<T> *der;
 	T dato;
 	char bal;
-	NodoAvl(T &ele):izq(0),der(0),dato(ele),bal(0){}
+	NodoAvl(T &ele):izq(0),der(0),dato(ele),bal(0),balancearPendiente(0){}
 	virtual ~NodoAvl(){}
+	char balancearPendiente;
 };
 
 } /* namespace EEDD */

@@ -20,7 +20,18 @@ Aplicacion4::Aplicacion4() {
 }
 
 Aplicacion4::~Aplicacion4() {
-	// TODO Auto-generated destructor stub
+	Iterador<DetalleLinea*>* it2;
+	it2 = lineas.iteradorIni();
+	while(it2->haySiguiente()){
+		delete it2->dato();
+		it2->siguiente();
+	}
+	Iterador<Ciudad*>* it;
+	it = ciudades.iteradorIni();
+	while(it->haySiguiente()){
+		delete it->dato();
+		it->siguiente();
+	}
 }
 
 void Aplicacion4::cargarArbol(Avl<Ciudad>* avl) {
@@ -32,10 +43,12 @@ void Aplicacion4::cargarArbol(Avl<Ciudad>* avl) {
 		//si la ciudad no está aún en el árbol la creo.
 		if(avl->busquedaNR(c) == 0){
 			Ciudad *c1 = new Ciudad();
+			ciudades.insertarFin(c1);
 			c1->setNombreCiudad(d->getCity());
 			avl->insertarNR(*c1);
 		}
 		avl->busquedaNR(c)->getListadoCodigos().insertarFin(d);
+		lineas.insertarFin(d);
 	}
 }
 

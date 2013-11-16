@@ -8,6 +8,7 @@
 #ifndef AVL_H_
 #define AVL_H_
 #include "NodoAvl.h"
+#include "Pila.h"
 namespace EEDD {
 
 template <typename T>
@@ -18,6 +19,7 @@ private:
 	void rotdecha(NodoAvl<T>* &p);
 	void rotizqda(NodoAvl<T>* &p);
 	NodoAvl<T>* buscaClave(T &ele, NodoAvl<T> *p);
+	void liberarRecursos(NodoAvl<T> *p);
 public:
 	Avl();
 	virtual ~Avl();
@@ -58,13 +60,22 @@ inline EEDD::Avl<T>::Avl() {
 
 template<typename T>
 inline EEDD::Avl<T>::~Avl() {
+	liberarRecursos(raiz);
 }
 
 template<typename T>
+inline void Avl<T>::liberarRecursos(NodoAvl<T>* p) {
+	if(p){
+		liberarRecursos(p->izq);
+		liberarRecursos(p->der);
+		delete p;
+	}
+}
+template<typename T>
 inline bool EEDD::Avl<T>::insertarNR(NodoAvl<T>* &c, T& dato) {
-	NodoAvl<T> *p = c;
+	NodoAvl<T>* p = c;
 	bool deltaH = 0;
-	if (!p){
+	if (!p){//Si el nodo está vacío se crea uno y se le asigna el dato
 		p = new NodoAvl<T>(dato);
 		c = p; deltaH=1;
 	}
@@ -94,13 +105,15 @@ inline bool EEDD::Avl<T>::insertarNR(T& dato) {
 
 template<typename T>
 inline NodoAvl<T>* EEDD::Avl<T>::buscaClave(T &ele, NodoAvl<T> *p) {
-	if (!p)
-		return 0;
-	else if (ele < p->dato)
-		return buscaClave (ele, p->izq);
-	else if (ele > p-> dato)
-		return buscaClave (ele, p->der);
-	else return p;
+	while(true){
+		if (!p)
+			return 0;
+		else if (ele < p->dato)
+			p = p->izq;
+		else if (ele > p->dato)
+			p = p->der;
+		else return p;
+	}
 }
 
 

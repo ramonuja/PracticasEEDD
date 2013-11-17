@@ -8,11 +8,12 @@
 
 #include <iostream>
 #include "Aplicacion4.h"
+#include "Aplicacion5.h"
 
 using namespace std;
 using namespace EEDD;
 
 int main(int argc, char** argv) {
-	Aplicacion4 a4;
-	return a4.ejecutar(argc, argv);
+	Aplicacion5 a;
+	return a.ejecutar(argc, argv);
 }

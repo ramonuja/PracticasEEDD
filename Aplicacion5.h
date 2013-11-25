@@ -10,17 +10,17 @@
 #include <map>
 #include <iostream>
 #include <string>
-#include "Ciudad.h"
+#include "StructPost.h"
 #include "Lista.h"
 #include "CargadorDatos.h"
 namespace EEDD {
 
 class Aplicacion5 {
 private:
-	void cargarArbol(map<string,Ciudad*> *avl);
-	void mostrarDetallesCiudad(map<string,Ciudad*> *avl,string nombreCiudad);
-	Lista<Ciudad*> ciudades;
-	Lista<DetalleLinea*> lineas;
+	void cargarArbol(map<string,StructPost*> *avl);
+	void mostrarDetallesCiudad(map<string,StructPost*> *avl,string nombreCiudad);
+	Lista<StructPost*> ciudades;
+	Lista<CodigoPost*> lineas;
 public:
 	Aplicacion5();
 	virtual ~Aplicacion5();

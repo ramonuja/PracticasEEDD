@@ -42,13 +42,13 @@ string& quitarComillas(string &s){
 	    );
 	return s;
 }
-DetalleLinea* CargadorDatos::siguienteDetalle() {
+CodigoPost* CargadorDatos::siguienteDetalle() {
 	if (fichero->is_open())
 	{
 		string line;
 		if(!getline(*fichero,line)) return 0;
 		quitarComillas(line);
-		DetalleLinea* dl = new DetalleLinea();
+		CodigoPost* dl = new CodigoPost();
 		int inicio,fin;
 		inicio = 0;
 		fin = 0;

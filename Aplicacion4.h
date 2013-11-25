@@ -9,7 +9,7 @@
 #define APLICACION4_H_
 #include <iostream>
 #include <string>
-#include "Ciudad.h"
+#include "StructPost.h"
 #include "Avl.h"
 #include "Lista.h"
 using namespace std;
@@ -17,10 +17,10 @@ namespace EEDD {
 
 class Aplicacion4 {
 private:
-	void cargarArbol(Avl<Ciudad> *avl);
-	void mostrarDetallesCiudad(Avl<Ciudad> *avl,string nombreCiudad);
-	Lista<Ciudad*> ciudades;
-	Lista<DetalleLinea*> lineas;
+	void cargarArbol(Avl<StructPost> *avl);
+	void mostrarDetallesCiudad(Avl<StructPost> *avl,string nombreCiudad);
+	Lista<StructPost*> ciudades;
+	Lista<CodigoPost*> lineas;
 public:
 	Aplicacion4();
 	virtual ~Aplicacion4();

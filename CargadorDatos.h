@@ -11,7 +11,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include "DetalleLinea.h"
+#include "CodigoPost.h"
 #include <string>
 #include <sstream>
 using namespace std;
@@ -24,7 +24,7 @@ private:
 public:
 	CargadorDatos();
 	virtual ~CargadorDatos();
-	DetalleLinea* siguienteDetalle();
+	CodigoPost* siguienteDetalle();
 };
 
 } /* namespace EEDD */

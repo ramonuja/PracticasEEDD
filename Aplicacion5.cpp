@@ -14,13 +14,13 @@ Aplicacion5::Aplicacion5() {
 }
 
 Aplicacion5::~Aplicacion5() {
-	Iterador<DetalleLinea*>* it2;
+	Iterador<CodigoPost*>* it2;
 		it2 = lineas.iteradorIni();
 		while(it2->haySiguiente()){
 			delete it2->dato();
 			it2->siguiente();
 		}
-		Iterador<Ciudad*>* it;
+		Iterador<StructPost*>* it;
 		it = ciudades.iteradorIni();
 		while(it->haySiguiente()){
 			delete it->dato();
@@ -28,36 +28,36 @@ Aplicacion5::~Aplicacion5() {
 		}
 }
 
-void Aplicacion5::cargarArbol(map<string,Ciudad*> *avl) {
+void Aplicacion5::cargarArbol(map<string,StructPost*> *avl) {
 	CargadorDatos cd;
-	DetalleLinea* d;
+	CodigoPost* d;
 	while(0!=(d=cd.siguienteDetalle())){
-		Ciudad c;
+		StructPost c;
 		c.setNombreCiudad(d->getCity());
 		//si la ciudad no está aún en el árbol la creo.
 		if(avl->find(c.getNombreCiudad()) == avl->end()){
-			Ciudad *c1 = new Ciudad();
+			StructPost *c1 = new StructPost();
 			ciudades.insertarFin(c1);
 			c1->setNombreCiudad(d->getCity());
-			avl->insert(pair<string,Ciudad*>(d->getCity(),c1));
+			avl->insert(pair<string,StructPost*>(d->getCity(),c1));
 		}
-		map<string,Ciudad*>::iterator it;
+		map<string,StructPost*>::iterator it;
 		it = avl->find(c.getNombreCiudad());
 		it->second->getListadoCodigos().insertarFin(d);
 		lineas.insertarFin(d);
 	}
 }
 
-void Aplicacion5::mostrarDetallesCiudad(map<string,Ciudad*> *avl,string nombreCiudad) {
-	Ciudad c;
+void Aplicacion5::mostrarDetallesCiudad(map<string,StructPost*> *avl,string nombreCiudad) {
+	StructPost c;
 	c.setNombreCiudad(nombreCiudad);
-	map<string,Ciudad*>::iterator itMap;
+	map<string,StructPost*>::iterator itMap;
 	itMap = avl->find(nombreCiudad);
 	if(itMap == avl->end()){
 		cout << "Ciudad " << nombreCiudad<<" no encontrada." << endl;
 		return;
 	}
-	EEDD::Iterador<DetalleLinea*>* itLineas;
+	EEDD::Iterador<CodigoPost*>* itLineas;
 	itLineas = itMap->second->getListadoCodigos().iteradorIni();
 	cout << "Zipcode\tZipCodeType\tCity\t\tState\tLocationType\tLat\tLong\tLocation\tDecommisioned\tTaxReturnsFiled\tEstimatedPopulation\tTotalWages" << endl;
 	while(itLineas->haySiguiente()){
@@ -80,7 +80,7 @@ void Aplicacion5::mostrarDetallesCiudad(map<string,Ciudad*> *avl,string nombreCi
 int Aplicacion5::ejecutar(int argc, char** argv) {
 	cout << "Ejecutando la práctica 5..." << endl;
 	string cadenaEntrada(argv[1]);
-	map<string,Ciudad*>* avl = new map<string,Ciudad*>();
+	map<string,StructPost*>* avl = new map<string,StructPost*>();
 	cargarArbol(avl);
 	mostrarDetallesCiudad(avl,cadenaEntrada);
 	return 0;

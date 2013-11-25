@@ -9,24 +9,24 @@
 #define CIUDAD_H_
 #include <string>
 #include "Lista.h"
-#include "DetalleLinea.h"
+#include "CodigoPost.h"
 using namespace std;
 namespace EEDD {
 
-class Ciudad {
+class StructPost {
 private:
 	string nombreCiudad;
-	Lista<DetalleLinea*> listadoCodigos;
+	Lista<CodigoPost*> listadoCodigos;
 public:
-	Ciudad();
-	virtual ~Ciudad();
+	StructPost();
+	virtual ~StructPost();
 
 	const string& getNombreCiudad() const;
 	void setNombreCiudad(const string& nombreCiudad);
-	bool operator < (Ciudad &ci);
-	bool operator > (Ciudad &ci);
-	 Lista<DetalleLinea*>& getListadoCodigos() ;
-	void setListadoCodigos( Lista<DetalleLinea*>& listadoCodigos);
+	bool operator < (StructPost &ci);
+	bool operator > (StructPost &ci);
+	 Lista<CodigoPost*>& getListadoCodigos() ;
+	void setListadoCodigos( Lista<CodigoPost*>& listadoCodigos);
 };
 
 } /* namespace EEDD */

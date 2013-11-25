@@ -5,41 +5,41 @@
  *      Author: druida
  */
 
-#include "Ciudad.h"
+#include "StructPost.h"
 
 namespace EEDD {
 
-Ciudad::Ciudad() {
+StructPost::StructPost() {
 	// TODO Auto-generated constructor stub
 
 }
 
 
-const string& Ciudad::getNombreCiudad() const {
+const string& StructPost::getNombreCiudad() const {
 	return nombreCiudad;
 }
 
-void Ciudad::setNombreCiudad(const string& nombreCiudad) {
+void StructPost::setNombreCiudad(const string& nombreCiudad) {
 	this->nombreCiudad = nombreCiudad;
 }
 
-Ciudad::~Ciudad() {
+StructPost::~StructPost() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Ciudad::operator <(Ciudad& ci) {
+bool StructPost::operator <(StructPost& ci) {
 	return nombreCiudad < ci.getNombreCiudad();
 }
 
- Lista<DetalleLinea*>& Ciudad::getListadoCodigos()  {
+ Lista<CodigoPost*>& StructPost::getListadoCodigos()  {
 	return listadoCodigos;
 }
 
-void Ciudad::setListadoCodigos( Lista<DetalleLinea*>& listadoCodigos) {
+void StructPost::setListadoCodigos( Lista<CodigoPost*>& listadoCodigos) {
 	this->listadoCodigos = listadoCodigos;
 }
 
-bool Ciudad::operator >(Ciudad& ci) {
+bool StructPost::operator >(StructPost& ci) {
 	return nombreCiudad > ci.getNombreCiudad();
 }
 

@@ -20,13 +20,13 @@ Aplicacion4::Aplicacion4() {
 }
 
 Aplicacion4::~Aplicacion4() {
-	Iterador<DetalleLinea*>* it2;
+	Iterador<CodigoPost*>* it2;
 	it2 = lineas.iteradorIni();
 	while(it2->haySiguiente()){
 		delete it2->dato();
 		it2->siguiente();
 	}
-	Iterador<Ciudad*>* it;
+	Iterador<StructPost*>* it;
 	it = ciudades.iteradorIni();
 	while(it->haySiguiente()){
 		delete it->dato();
@@ -34,15 +34,15 @@ Aplicacion4::~Aplicacion4() {
 	}
 }
 
-void Aplicacion4::cargarArbol(Avl<Ciudad>* avl) {
+void Aplicacion4::cargarArbol(Avl<StructPost>* avl) {
 	CargadorDatos cd;
-	DetalleLinea* d;
+	CodigoPost* d;
 	while(0!=(d=cd.siguienteDetalle())){
-		Ciudad c;
+		StructPost c;
 		c.setNombreCiudad(d->getCity());
 		//si la ciudad no está aún en el árbol la creo.
 		if(avl->busquedaNR(c) == 0){
-			Ciudad *c1 = new Ciudad();
+			StructPost *c1 = new StructPost();
 			ciudades.insertarFin(c1);
 			c1->setNombreCiudad(d->getCity());
 			avl->insertarNR(*c1);
@@ -52,15 +52,15 @@ void Aplicacion4::cargarArbol(Avl<Ciudad>* avl) {
 	}
 }
 
-void Aplicacion4::mostrarDetallesCiudad(Avl<Ciudad>* avl, string nombreCiudad) {
-	Ciudad c;
+void Aplicacion4::mostrarDetallesCiudad(Avl<StructPost>* avl, string nombreCiudad) {
+	StructPost c;
 	c.setNombreCiudad(nombreCiudad);
-	Ciudad* c2 = avl->busquedaNR(c);
+	StructPost* c2 = avl->busquedaNR(c);
 	if(c2 == 0){
 		cout << "Ciudad " << nombreCiudad<<" no encontrada." << endl;
 		return;
 	}
-	EEDD::Iterador<DetalleLinea*>* it;
+	EEDD::Iterador<CodigoPost*>* it;
 	it = c2->getListadoCodigos().iteradorIni();
 	cout << "Zipcode\tZipCodeType\tCity\t\tState\tLocationType\tLat\tLong\tLocation\tDecommisioned\tTaxReturnsFiled\tEstimatedPopulation\tTotalWages" << endl;
 	while(it->haySiguiente()){
@@ -82,7 +82,7 @@ void Aplicacion4::mostrarDetallesCiudad(Avl<Ciudad>* avl, string nombreCiudad) {
 
 int Aplicacion4::ejecutar(int argc, char** argv) {
 	string cadenaEntrada(argv[1]);
-	Avl<Ciudad>* avl = new Avl<Ciudad>();
+	Avl<StructPost>* avl = new Avl<StructPost>();
 	cargarArbol(avl);
 	mostrarDetallesCiudad(avl,cadenaEntrada);
 	return 0;

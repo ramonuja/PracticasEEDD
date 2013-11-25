@@ -9,11 +9,11 @@
 #define	DETALLELINEA_H
 #include <string>
 using namespace std;
-class DetalleLinea {
+class CodigoPost {
 public:
-    DetalleLinea();
-    DetalleLinea(const DetalleLinea& orig);
-    virtual ~DetalleLinea();
+    CodigoPost();
+    CodigoPost(const CodigoPost& orig);
+    virtual ~CodigoPost();
 	const string& getCity() const;
 	void setCity(const string& city);
 	const string& getDecommisioned() const;

@@ -10,7 +10,6 @@
 namespace EEDD {
 
 StructPost::StructPost() {
-	// TODO Auto-generated constructor stub
 
 }
 
@@ -24,7 +23,6 @@ void StructPost::setNombreCiudad(const string& nombreCiudad) {
 }
 
 StructPost::~StructPost() {
-	// TODO Auto-generated destructor stub
 }
 
 bool StructPost::operator <(StructPost& ci) {

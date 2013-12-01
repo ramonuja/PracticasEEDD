@@ -65,7 +65,6 @@ public:
 	inline Iterador<T>* iteradorFin(){return new Iterador<T>(cola);}
 
 	inline void insertar(Iterador<T> &it, const T &dato){
-		//TODO Todavía por implementar
 		Nodo<T> *nuevo;
 
 		// Caso especial: si la lista estaba

@@ -15,7 +15,6 @@ using namespace std;
 namespace EEDD {
 
 Aplicacion4::Aplicacion4() {
-	// TODO Auto-generated constructor stub
 
 }
 

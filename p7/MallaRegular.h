@@ -21,8 +21,10 @@ public:
 	friend class MallaRegular<U>;
 	Casilla(): puntos(){}
 	void inserta (U &dato) { puntos.push_back(dato); }
+	const list<U>* getPuntos() {return &puntos;}
 	bool busca (U &dato);
 	bool borra (U &dato);
+
 };
 
 template <class U>
@@ -59,6 +61,10 @@ public:
 	void insertarDato(float x, float y, T &dato);
 	Casilla<T> *borrarDato(float x, float y, T& dato);
 	vector<T> buscarRango(float rxmin, float rymin, float rxmax, float rymax);
+	float getRXMin(int i){return xMin+(tamaCasillaX * i);}
+	float getRXMax(int i){return xMin+(tamaCasillaX * (1+i));}
+	float getRYMin(int j){return xMin+(tamaCasillaY * j);}
+	float getRYMax(int j){return xMin+(tamaCasillaY * (1+j));}
 };
 
 template <class T>
@@ -73,11 +79,37 @@ Casilla<T> *MallaRegular<T>::obtenerCasilla (float x, float y){
 	int j = (y - yMin) / tamaCasillaY;
 	return &mr[i][j];
 }
+template<class T>
+inline vector<T> EEDD::MallaRegular<T>::buscarRango(float rxmin,
+		float rymin, float rxmax, float rymax) {
+	//		float posicionXActual = rxmin;
+//		float posicionYActual = rymin;
+//		int i = (rxmin - xMin) / tamaCasillaX;
+//		int j = (rymin - yMin) / tamaCasillaY;
+//		while(true){//iteración sobre el eje y
+//			while(getRXMin(i) < ){//iteración sobre el eje x
+//				// chequeamos si la casilla está completamente incluida en la selección.
+//				if	((rxmin >= getRXMin(i)) &&
+//					(rxmax <= getRXMax(i)) &&
+//					(rymin >= getRYMin(j)) &&
+//					(rxmin >= getRYMax(j))){
+//
+//				}//end_if
+//			}//end_iteración sobre x
+//		}//end_iteración sobre y
+	for (vector<vector<Casilla<T>>>::iterator it = mr.begin() ; it != mr.end(); ++it){
+		it
+//		for (std::vector<Casilla<T> >::iterator it2 = it.; it2 != mr.end(); ++it2){
+//
+//		}
+	}
+}
 template <class T>
 void MallaRegular<T>::insertarDato(float x, float y, T& dato){
 	Casilla<T> *c = obtenerCasilla(x,y);
 	c->inserta(dato);
 }
+
 template <class T>
 Casilla<T> *MallaRegular<T>::borrarDato(float x, float y, T& dato){
 	Casilla<T> *c = obtenerCasilla(x,y);
@@ -88,11 +120,6 @@ Casilla<T> *MallaRegular<T>::borrarDato(float x, float y, T& dato){
 
 
 
-template<class T>
-inline vector<T> EEDD::MallaRegular<T>::buscarRango(float rxmin,
-		float rymin, float rxmax, float rymax) {
-
-}
 } /* namespace EEDD */
 
 #endif /* MALLAREGULAR_H_ */

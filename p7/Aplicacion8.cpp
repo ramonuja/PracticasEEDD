@@ -44,8 +44,8 @@ int Aplicacion8::exec ()
 	int ncol = img.numColumnas();
 
 	int r = 0; // azul
-	int g = 255;
-	int b = 0;
+	int g = 0;
+	int b = 255;
 
 	double minlat = 9e99;
 	double maxlat = 0;

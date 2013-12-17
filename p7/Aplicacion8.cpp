@@ -5,23 +5,26 @@
  *      Author: druida
  */
 
-#include "Aplicacion8.h"
 #include <fstream>
 #include <vector>
 #include <cstdlib>
 #include <math.h>
 #include <string.h>
+#include <vector>
+#include "Aplicacion8.h"
 #include "img.h"
+#include "MallaRegular.h"
+#include "../old/CodigoPost.h"
+#include "../old/CargadorDatos.h"
 
 namespace EEDD {
 
 Aplicacion8::Aplicacion8() {
-	// TODO Auto-generated constructor stub
 
 }
 
 Aplicacion8::~Aplicacion8() {
-	// TODO Auto-generated destructor stub
+	// TODO Liberar memoria de la malla
 }
 
 
@@ -47,6 +50,10 @@ int Aplicacion8::exec ()
 	int g = 0;
 	int b = 255;
 
+//	double minlat = 7.3624;
+//	double maxlat = 72.0739;
+//	double minlon = -169.8596;
+//	double maxlon = -52.7893;
 	double minlat = 9e99;
 	double maxlat = 0;
 	double minlon = 9e99;
@@ -160,12 +167,25 @@ int Aplicacion8::exec ()
 
 	img.pintarRecuadro((lat1 - minlat) * pixelPorGradoX, ncol - 1 - ((lon1 - minlon) * pixelPorGradoY),
 			(lat2 - minlat) * pixelPorGradoX, ncol - 1 - ((lon2 - minlon) * pixelPorGradoY), 255, 0, 0);
-
+	//Creación y carga de los datos en la malla.
+	MallaRegular<CodigoPost* > malla(-169.8596,7.3624,-52.7893,72.0739,100);
+	CargadorDatos cd;
+	CodigoPost* cp;
+	while (0 != (cp=cd.siguienteDetalle())){
+		malla.insertarDato(cp->getLon(),cp->getLat(),cp);
+	}
 	// aqui se realiza el test del modo:
 	// vector<CodigoPost> buscarRango (lat1, lon1, lat2, lon2);
-
+//	vector<CodigoPost*> lCodigos = malla.buscarRango((lat1 - minlat) * pixelPorGradoX, ncol - 1 - ((lon1 - minlon) * pixelPorGradoY),
+//			(lat2 - minlat) * pixelPorGradoX, ncol - 1 - ((lon2 - minlon) * pixelPorGradoY));
 	// luego se recorre dicho vector, y para las coordenadas de cada CodigoPost se vuelven a pintar
 	//fichero en color verde
+//	for (unsigned int i=0; i< lCodigos.size(); i++){
+//			int posX = (lCodigos[i]->getLat() - minlat) * pixelPorGradoX;
+//			int posY = ncol - 1 - ((lCodigos[i]->getLon()-minlon) * pixelPorGradoY);
+//			//img.pintarPixelGrande(posX,posY,r,g,b);
+//			img.pintarPixel(posX,posY,0,255,0);
+//		}
 
 	try {
 		img.guardar("./mapaUsaResult.ppm");

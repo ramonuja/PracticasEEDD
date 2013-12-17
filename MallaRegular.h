@@ -8,16 +8,17 @@
 #ifndef MALLAREGULAR_H_
 #define MALLAREGULAR_H_
 
-#include "../old/CodigoPost.h"
+#include "CodigoPost.h"
 #include <vector>
 #include <list>
 namespace EEDD {
 
 using namespace std;
 
-template <typename U>
+template <class U>
 class Casilla{
-//	template <typename T> friend class MallaRegular;
+private:
+//	template <class T> friend class MallaRegular;
 	list<U> puntos;
 public:
 	inline Casilla(): puntos(){}
@@ -28,9 +29,9 @@ public:
 
 };
 
-template <typename U>
+template <class U>
 inline bool EEDD::Casilla<U>::busca(U& dato){
-	typename list<U>::iterator it;
+	class list<U>::iterator it;
 	it = puntos.begin();
 	while (it != puntos.end()){
 		if (*it == dato)
@@ -39,9 +40,9 @@ inline bool EEDD::Casilla<U>::busca(U& dato){
 	return false;
 }
 
-template <typename U>
+template <class U>
 inline bool EEDD::Casilla<U>::borra(U& dato){
-	typename list<U>::iterator it;
+	class list<U>::iterator it;
 	it = puntos.begin();
 	while (it != puntos.end()){
 		if (*it == dato)
@@ -50,17 +51,18 @@ inline bool EEDD::Casilla<U>::borra(U& dato){
 	}
 	return false;
 }
-template <typename T>
+template <class T>
 class MallaRegular {
+private:
 	double xMin, yMin, xMax, yMax; //tamaño real global
 	double tamaCasillaX, tamaCasillaY; //tamaño real de cada casilla
 	vector<vector<Casilla<T> > > mr; //vector 2D de casillas
-	Casilla<T> *obtenerCasilla(double x, double y);
+	Casilla<T>* obtenerCasilla(double x, double y);
 public:
 	MallaRegular(double aXMin, double aYMin, double aXMax, double aYMax, int
 			aNDiv);
 	void insertarDato(double x, double y, T &dato);
-	Casilla<T> *borrarDato(double x, double y, T& dato);
+	Casilla<T>* borrarDato(double x, double y, T& dato);
 	vector<T> buscarRango(double rxmin, double rymin, double rxmax, double rymax);
 //	double getXMin(int i){return xMin+(tamaCasillaX * i);}
 //	double getXMax(int i){return xMin+(tamaCasillaX * (1+i));}
@@ -68,19 +70,19 @@ public:
 //	double getYMax(int j){return xMin+(tamaCasillaY * (1+j));}
 };
 
-template <typename T>
+template <class T>
 inline EEDD::MallaRegular<T>::MallaRegular(double aXMin, double aYMin, double aXMax, double
 		aYMax, int aNDiv) : xMin(aXMin), yMin(aYMin), xMax(aXMax), yMax(aYMax){
 	tamaCasillaX = (xMax-xMin)/aNDiv;
 	tamaCasillaY = (yMax-yMin)/aNDiv;
 }
-template <typename T>
+template <class T>
 inline Casilla<T>* EEDD::MallaRegular<T>::obtenerCasilla (double x, double y){
 	int i = (x - xMin) / tamaCasillaX;
 	int j = (y - yMin) / tamaCasillaY;
 	return &mr[i][j];
 }
-template<typename T>
+template<class T>
 inline vector<T> EEDD::MallaRegular<T>::buscarRango(double rxmin,
 		double rymin, double rxmax, double rymax) {
 //	vector<T> puntos;
@@ -112,13 +114,13 @@ inline vector<T> EEDD::MallaRegular<T>::buscarRango(double rxmin,
 //	}//end_iteración sobre y
 	throw "";
 }
-template <typename T>
+template <class T>
 inline void MallaRegular<T>::insertarDato(double x, double y, T& dato){
 	Casilla<T> *c = obtenerCasilla(x,y);
 	c->inserta(dato);
 }
 
-template <typename T>
+template <class T>
 inline Casilla<T>* EEDD::MallaRegular<T>::borrarDato(double x, double y, T& dato){
 	Casilla<T> *c = obtenerCasilla(x,y);
 	if (c->borra(dato))

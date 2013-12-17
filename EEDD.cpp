@@ -7,10 +7,10 @@
 //============================================================================
 
 #include <iostream>
-#include "old/Aplicacion4.h"
-#include "old/Aplicacion5.h"
-#include "old/Aplicacion6.h"
-#include "p7/Aplicacion8.h"
+#include "Aplicacion4.h"
+#include "Aplicacion5.h"
+#include "Aplicacion6.h"
+#include "Aplicacion8.h"
 
 using namespace std;
 using namespace EEDD;

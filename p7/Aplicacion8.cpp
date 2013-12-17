@@ -172,7 +172,7 @@ int Aplicacion8::exec ()
 	CargadorDatos cd;
 	CodigoPost* cp;
 	while (0 != (cp=cd.siguienteDetalle())){
-		malla.insertarDato(cp->getLon(),cp->getLat(),cp);
+//		malla.insertarDato(cp->getLon(),cp->getLat(),cp);
 	}
 	// aqui se realiza el test del modo:
 	// vector<CodigoPost> buscarRango (lat1, lon1, lat2, lon2);

@@ -82,7 +82,7 @@ unsigned long Aplicacion6::djb2(string s) {
 int Aplicacion6::ejecutar(int argc, char** argv) {
 	cout << "Ejecutando la práctica 6..." << endl;
 	string cadenaEntrada(argv[1]);
-	int tamanoTabla = 60013;
+	int tamanoTabla = 26813;
 	cout << "Creada tabla de dispersión con tamaño: " << tamanoTabla << endl;
 	Dispersion<StructPost> disp(tamanoTabla);
 	cargarTablaDispersion(disp);

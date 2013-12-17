@@ -7,7 +7,7 @@
 
 #ifndef CARGADORDATOS_H_
 #define CARGADORDATOS_H_
-#define RUTA_FICHERO "/home/druida/workspace/EEDD/PracticasEEDD/free-zipcode-database-Primary.csv"
+#define RUTA_FICHERO "/home/druida/workspace/EEDD/PracticasEEDD/old/free-zipcode-database-Primary.csv"
 #include <iostream>
 #include <fstream>
 #include <cstring>

@@ -9,7 +9,15 @@
 #define	DETALLELINEA_H
 #include <string>
 using namespace std;
-class CodigoPost {
+
+class IPosicionable {
+public:
+	virtual double getLat() =0;
+	virtual double getLon() =0;
+	virtual ~IPosicionable(){}
+};
+
+class CodigoPost : public IPosicionable {
 public:
     CodigoPost();
     CodigoPost(const CodigoPost& orig);
@@ -20,14 +28,14 @@ public:
 	void setDecommisioned(const string& decommisioned);
 	const string& getEstimatedPopulation() const;
 	void setEstimatedPopulation(const string& estimatedPopulation);
-	const string& getLat() const;
-	void setLat(const string& lat);
+	double getLat() ;
+	void setLat(double lat);
 	const string& getLocation() const;
 	void setLocation(const string& location);
 	const string& getLocationType() const;
 	void setLocationType(const string& locationType);
-	const string& getLon() const;
-	void setLon(const string& lon);
+	double getLon() ;
+	void setLon(double lon);
 	const string& getState() const;
 	void setState(const string& state);
 	const string& getTaxReturnsFiled() const;
@@ -45,8 +53,8 @@ private:
     string city;
     string state;
     string locationType;
-    string lat;
-    string lon;
+    double lat;
+    double lon;
     string location;
     string decommisioned;
     string taxReturnsFiled;

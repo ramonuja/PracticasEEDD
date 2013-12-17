@@ -126,6 +126,6 @@ inline T* EEDD::Avl<T>::busquedaNR(T& dato) {
 	return 0;
 }
 
+} /* namespace EEDD */
 #endif /* AVL_H_ */
 
-} /* namespace EEDD */

@@ -41,11 +41,11 @@ void CodigoPost::setEstimatedPopulation(const string& estimatedPopulation) {
 	this->estimatedPopulation = estimatedPopulation;
 }
 
-const string& CodigoPost::getLat() const {
+double CodigoPost::getLat()  {
 	return lat;
 }
 
-void CodigoPost::setLat(const string& lat) {
+void CodigoPost::setLat(double lat) {
 	this->lat = lat;
 }
 
@@ -65,11 +65,11 @@ void CodigoPost::setLocationType(const string& locationType) {
 	this->locationType = locationType;
 }
 
-const string& CodigoPost::getLon() const {
+double CodigoPost::getLon()  {
 	return lon;
 }
 
-void CodigoPost::setLon(const string& lon) {
+void CodigoPost::setLon(double lon) {
 	this->lon = lon;
 }
 

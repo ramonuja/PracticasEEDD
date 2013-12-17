@@ -7,6 +7,7 @@
 
 #include "CargadorDatos.h"
 #include <algorithm>
+#include <stdlib.h>
 namespace EEDD {
 
 CargadorDatos::CargadorDatos() {
@@ -15,6 +16,8 @@ CargadorDatos::CargadorDatos() {
 	{
 		string line;
 		getline(*fichero,line);
+	}else{
+		throw "No se pudo abrir el fichero para la lectura de los códigos postales";
 	}
 }
 
@@ -83,12 +86,14 @@ CodigoPost* CargadorDatos::siguienteDetalle() {
 		inicio = lista[4];
 		fin = lista[5];
 		//cout << "el código zip es:" << line.substr(inicio+1,fin-inicio-1) << endl;
-		dl->setLat(line.substr(inicio+1,fin-inicio-1));
+		double lat = atof((line.substr(inicio+1,fin-inicio-1)).c_str());
+		dl->setLat(lat);
 		//Lon - Double
 		inicio = lista[5];
 		fin = lista[6];
 		//cout << "el código zip es:" << line.substr(inicio+1,fin-inicio-1) << endl;
-		dl->setLon(line.substr(inicio+1,fin-inicio-1));
+		double lon = atof((line.substr(inicio+1,fin-inicio-1)).c_str());
+		dl->setLon(lon);
 		//Location - String
 		inicio = lista[6];
 		fin = lista[7];
